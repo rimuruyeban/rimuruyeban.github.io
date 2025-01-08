@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт Римуру</title>
+    <style>
+        :root {
+            /* Light theme variables */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent: #6366f1;
+            --accent-dark: #4f46e5;
+            --border: #e2e8f0;
+            --input-bg: #ffffff;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme variables */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent: #818cf8;
+            --accent-dark: #6366f1;
+            --border: #334155;
+            --input-bg: #1e293b;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-primary);
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            text-align: center;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .price-highlight {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.125rem;
+            padding: 0.5rem;
+            background: var(--bg-primary);
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: var(--input-bg);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .form-group button:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        .form-group button:active {
+            transform: translateY(0);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-dark);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Сменить тему</button>
+    <div class="container">
+        <h1>Добро пожаловать на сайт Римуру!</h1>
+        <p>Здесь вы можете пополнить свой баланс для общения со мной.</p>
+        <p class="price-highlight">100 рублей = 1 минута общения со мной</p>
+        <form action="https://youtu.be/dQw4w9WgXcQ">
+            <div class="form-group">
+                <label for="discord">Ваш никнейм в дискорде</label>
+                <input type="text" id="discord" name="discord" placeholder="Например: username#1234">
+            </div>
+            <div class="form-group">
+                <label for="amount">Сумма пополнения</label>
+                <input type="number" id="amount" name="amount" placeholder="Введите сумму в рублях">
+            </div>
+            <div class="form-group">
+                <label for="card-number">Номер банковской карты</label>
+                <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX">
+            </div>
+            <div class="form-group">
+                <label for="cvc">CVC код</label>
+                <input type="password" id="cvc" name="cvc" placeholder="***" maxlength="3">
+            </div>
+            <div class="form-group">
+                <button type="submit">Пополнить баланс</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Check for saved theme preference or default to 'light'
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+    </script>
+</body>
+</html>
